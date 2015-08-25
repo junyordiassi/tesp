@@ -1,4 +1,4 @@
-package br.unibh.teste01;
+package br.unibh.teste01.entidades;
 
 import java.math.BigDecimal;
 import java.util.Date;
