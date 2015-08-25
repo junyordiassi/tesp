@@ -1,7 +1,12 @@
 package br.unibh.teste01.entidades;
 
 import java.math.BigDecimal;
+import java.sql.Connection;
 import java.util.Date;
+
+
+
+import br.unibh.persistencia.JDBCUtil;
 
 public class Main {
 
@@ -26,6 +31,13 @@ public class Main {
    Professor prof1  = new Professor(15L, "Jose Humberto", "12312312312", new BigDecimal(10000));
 		
 		System.out.println(prof1);
+		
+		try {
+			Connection c = JDBCUtil.getConnection();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
 	}
 
