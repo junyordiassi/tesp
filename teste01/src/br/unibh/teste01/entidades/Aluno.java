@@ -36,6 +36,12 @@ public class Aluno extends Pessoa {
 		this.aniversario = aniversario;
 	}
 
+	@Override
+	public String toString() {
+		return "Aluno [matricula=" + matricula + ", aniversario=" + aniversario + ", toString()=" + super.toString()
+				+ "]";
+	}
+
 	
 
 }

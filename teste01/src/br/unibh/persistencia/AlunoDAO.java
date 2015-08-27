@@ -44,6 +44,8 @@ public class AlunoDAO implements DAO<Aluno, Long> {
 			ResultSet res = con.prepareStatement("select * from tb_aluno").executeQuery();
 
 			while (res.next()) {
+				lista.add(new Aluno(res.getLong("id"), res.getString("nome"), res.getString("cpf"),
+						res.getString("matricula"), res.getDate("data_aniversario")));
 
 			}
 
@@ -59,7 +61,7 @@ public class AlunoDAO implements DAO<Aluno, Long> {
 			}
 		}
 
-		return null;
+		return lista;
 	}
 
 }
