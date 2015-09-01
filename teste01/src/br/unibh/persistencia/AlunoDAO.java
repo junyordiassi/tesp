@@ -9,8 +9,7 @@ import br.unibh.teste01.entidades.Aluno;
 
 public class AlunoDAO implements DAO<Aluno, Long> {
 
-	private static Connection con = null;
-
+	
 	@Override
 	public Aluno find(Long id) {
 		// TODO Auto-generated method stub
@@ -40,8 +39,7 @@ public class AlunoDAO implements DAO<Aluno, Long> {
 		ArrayList<Aluno> lista = new ArrayList<Aluno>();
 		try {
 
-			con = JDBCUtil.getConnection();
-			ResultSet res = con.prepareStatement("select * from tb_aluno").executeQuery();
+			ResultSet res = JDBCUtil.getConnection().prepareStatement("select * from tb_aluno").executeQuery();
 
 			while (res.next()) {
 				lista.add(new Aluno(res.getLong("id"), res.getString("nome"), res.getString("cpf"),

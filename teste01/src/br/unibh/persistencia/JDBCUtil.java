@@ -12,13 +12,19 @@ public class JDBCUtil {
 			con = DriverManager.getConnection("jdbc:mysql://localhost:3306/unibh", "unibh", "1234");
 			System.out.println("conectou no banco griiiiii");
 		}
-		
+
 		return con;
 	}
 
-	public static void closeConnection() throws Exception {
-		if (con != null && !con.isClosed()) {
-			con.close();
+	public static void closeConnection() {
+		try {
+			if (con != null && !con.isClosed()) {
+				con.close();
+			}
+		} catch (Exception e) {
+			// TODO: handle exception
+
 		}
 	}
+
 }
