@@ -1,6 +1,5 @@
 package br.unibh.persistencia;
 
-import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.text.SimpleDateFormat;
@@ -62,7 +61,7 @@ public class AlunoDAO implements DAO<Aluno, Long> {
 			p.setString(1, t.getMatricula());
 			p.executeUpdate();
 		} catch (Exception e) {
-			// TODO: handle exception
+			e.printStackTrace();
 		} finally {
 			JDBCUtil.closeConnection();
 		}
@@ -70,8 +69,21 @@ public class AlunoDAO implements DAO<Aluno, Long> {
 
 	@Override
 	public void update(Aluno t) {
-		// TODO Auto-generated method stub
+		try {
 
+			PreparedStatement p = JDBCUtil.getConnection().prepareStatement("update tb_aluno set nome = ?, cpf = ?,"
+					+ " matricula = ?, data_aniversario = ? " + "where id = ?");
+			p.setString(1, t.getNome());
+			p.setString(2, t.getCpf());
+			p.setString(3, t.getMatricula());
+			p.setString(4, df.format(t.getAniversario()));
+			p.setLong(5, t.getId());
+			p.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			JDBCUtil.closeConnection();
+		}
 	}
 
 	@Override
@@ -101,7 +113,7 @@ public class AlunoDAO implements DAO<Aluno, Long> {
 			}
 
 		} catch (Exception e) {
-			// TODO: handle exception
+			e.printStackTrace();
 		} finally {
 			JDBCUtil.closeConnection();
 
