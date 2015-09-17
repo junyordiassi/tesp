@@ -42,6 +42,7 @@ public class testes {
 		Assert.assertEquals(a.getNome(), "Euder Campos");
 	}
 	
+	@Test
 	public void testeAlunoInsertEdelete() {
 		AlunoDAO dao = new AlunoDAO();
 		Aluno a = new Aluno(null, "Beltrano da Silva","85456325458","7896541", new Date());
@@ -55,6 +56,7 @@ public class testes {
 		Assert.assertNull(c);
 	}
 	
+	@Test
 	public void testeProfessorInsertEdelete() {
 		ProfessorDAO dao = new ProfessorDAO();
 		Professor a = new Professor(null, "Beltrano da Silva","85456325458", new BigDecimal(1400.00));
