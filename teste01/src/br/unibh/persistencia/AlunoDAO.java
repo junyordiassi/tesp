@@ -57,9 +57,9 @@ public class AlunoDAO implements DAO<Aluno, Long> {
 			PreparedStatement p = JDBCUtil.getConnection().prepareStatement(
 					"insert into tb_aluno" + " (nome, cpf, matricula, data_aniversario)" + "values (?,?,?,?)");
 			p.setString(1, t.getNome());
-			p.setString(1, t.getCpf());
-			p.setString(1, t.getMatricula());
-			p.executeUpdate();
+			p.setString(2, t.getCpf());
+			p.setString(3, t.getMatricula());
+			p.setString(4, df.format(t.getAniversario()));
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
