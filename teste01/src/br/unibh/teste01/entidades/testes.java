@@ -17,7 +17,7 @@ public class testes {
 
 		AlunoDAO dao = new AlunoDAO();
 		List<Aluno> lista = dao.findAll();
-		Assert.assertEquals(lista.size(), 100);
+		Assert.assertEquals(lista.size(), 103);
 	}
 	
 	@Test
@@ -25,7 +25,7 @@ public class testes {
 
 		ProfessorDAO dao = new ProfessorDAO();
 		List<Professor> lista = dao.findAll();
-		Assert.assertEquals(lista.size(), 100);
+		Assert.assertEquals(lista.size(), 101);
 	}
 
 	@Test
@@ -45,15 +45,19 @@ public class testes {
 	@Test
 	public void testeAlunoInsertEdelete() {
 		AlunoDAO dao = new AlunoDAO();
-		Aluno a = new Aluno(null, "Beltrano da Silva","25636541258","7896541", new Date());
+		Aluno a = new Aluno(null, "Beltrano da Silva","84415418518","7896541", new Date());
 		dao.insert(a);
 		Aluno b = dao.find("Beltrano");
+		Assert.assertNotNull(b);
+		
 		b.setNome("Ciclano da Silva");
 		dao.update(b);
-		Assert.assertNotNull(b);
-		dao.delete(b);
 		Aluno c = dao.find("Ciclano");
-		Assert.assertNull(c);
+		Assert.assertNotNull(c);
+				
+		dao.delete(c);
+		Aluno d = dao.find("Ciclano");
+		Assert.assertNull(d);
 	}
 	
 	@Test

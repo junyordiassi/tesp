@@ -60,6 +60,7 @@ public class AlunoDAO implements DAO<Aluno, Long> {
 			p.setString(2, t.getCpf());
 			p.setString(3, t.getMatricula());
 			p.setString(4, df.format(t.getAniversario()));
+			p.executeUpdate();
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
@@ -90,7 +91,7 @@ public class AlunoDAO implements DAO<Aluno, Long> {
 	public void delete(Aluno t) {
 		try {
 
-			PreparedStatement p = JDBCUtil.getConnection().prepareStatement("delete * from tb_aluno where nome like ?");
+			PreparedStatement p = JDBCUtil.getConnection().prepareStatement("delete from tb_aluno where id = ?");
 			p.setLong(1, t.getId());
 			p.executeUpdate();
 		} catch (Exception e) {
